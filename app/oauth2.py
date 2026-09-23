@@ -1,5 +1,3 @@
-from dotenv import load_dotenv
-import os
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from . import schemas, database, models
@@ -9,8 +7,6 @@ from sqlalchemy.orm import Session
 from .config import settings
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
-
-load_dotenv()
 
 SECRET_KEY = settings.secret_key
 ALGORITHM = settings.algorithm
