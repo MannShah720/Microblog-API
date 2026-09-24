@@ -14,7 +14,8 @@ The API is divided into four main routes:
 ## Database
 - For the database itself, I used pgAdmin to manage and inspect the database.
 - I initially used raw SQL but switched to SQLAlchemy as an ORM, allowing me to write sql operations and define my database structure using Python code
-- But one limitation that i encountered with SQLAlchemy is that it doesn't allow us to modify tables if they already exist, which means we have to resort to dropping the tables and restarting the application, which led me to explore Alembic - a migration tool that allows database schemas to be updated incrementally without having to drop anything
+- But one limitation that i encountered with SQLAlchemy is that it doesn't allow us to modify tables if they already exist, which means we have to resort to dropping the tables and restarting the application
+- This led me to explore Alembic which is a migration tool that allows database schemas to be updated incrementally without having to drop anything
 
 ## Login & Authentication
 - I implemented user registration with password hashing so that passwords are securely hashed before being stored
