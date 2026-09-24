@@ -9,13 +9,13 @@ The API is divided into four main routes:
 # My learning journey
 
 ## Testing
-- I used Postman to test my API endpoints throughout development. This allowed me to send different types of requests, inspect the responses, test different scenarios, and make sure that the API was behaving as expected.
+- I used Postman to test my API endpoints throughout development - this allowed me to send different types of requests, inspect the responses & test different scenarios.
 
 ## Database
-- For the database itself, I used pgAdmin to manage and inspect the database.
+- I used pgAdmin to manage and inspect the database
 - I initially used raw SQL but switched to SQLAlchemy as an ORM, allowing me to write sql operations and define my database structure using Python code
-- But one limitation that i encountered with SQLAlchemy is that it doesn't allow us to modify tables if they already exist, which means we have to resort to dropping the tables and restarting the application
-- This led me to explore Alembic which is a migration tool that allows database schemas to be updated incrementally without having to drop anything
+- But one limitation that i encountered with SQLAlchemy is that it doesn't allow me to modify tables if they already exist, which means i have to resort to dropping the tables and restarting the application
+- This led me to explore Alembic which is a migration tool that allows database schemas to be updated incrementally without having to drop anything and also revert back a previous version
 
 ## Login & Authentication
 - I implemented user registration with password hashing so that passwords are securely hashed before being stored
