@@ -6,6 +6,8 @@ The API is divided into four main routes:
 - Auth — Handles user authentication and the login system
 - Vote — Handles the application's like/upvote system
 
+Check out the documentation: https://microblog-api-11vg.onrender.com/docs
+
 # My learning journey
 
 ## Testing
