@@ -50,15 +50,3 @@ The project also includes **pytest** automated tests, which are run through **Gi
 ## 🐳 Deployment
 
 The application is containerised using **Docker** and deployed to **Render**, with separate development and production configuration.
-
-## 📚 Learning Resource
-
-I developed this project while following a 19-hour FastAPI course, using it as a learning resource while implementing and extending the application:
-
-https://www.youtube.com/watch?v=0sOvCWFmrtA
-
-## 📖 API Documentation
-
-Explore and test the deployed API through the interactive Swagger documentation:
-
-**https://microblog-api-11vg.onrender.com/docs**
