@@ -11,12 +11,12 @@ https://microblog-api-11vg.onrender.com/docs
 
 ## 🛠️ Tech Stack
 
-**Backend:** Python, FastAPI, Pydantic
-**Database:** PostgreSQL, SQLAlchemy, Alembic
-**Authentication:** JWT, OAuth2, password hashing
-**Testing:** pytest, Postman
-**DevOps:** Docker, Docker Compose, GitHub Actions, Render
-**Tools:** pgAdmin, Git, Linux
+- **Backend:** Python, FastAPI, Pydantic
+- **Database:** PostgreSQL, SQLAlchemy, Alembic
+- **Authentication:** JWT, OAuth2, password hashing
+- **Testing:** pytest, Postman
+- **DevOps:** Docker, Docker Compose, GitHub Actions, Render
+- **Tools:** pgAdmin, Git, Linux
 
 ## 📌 Features
 
