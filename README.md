@@ -1,24 +1,52 @@
-# Microblog API
-This is the backend for a microblogging/social media application, built around a REST API.
-The API is divided into four main routes:
-- Post — Handles creating, reading, updating, and deleting posts
-- User — Handles user creation and retrieving users by their ID
-- Auth — Handles user authentication and the login system
-- Vote — Handles the application's like/upvote system
+# Microblog REST API
 
-Check out the documentation: https://microblog-api-11vg.onrender.com/docs
+A backend REST API for a microblogging/social media application built with **Python, FastAPI and PostgreSQL**.
 
-# My learning journey
+The project implements user authentication, post management and an upvote system, with **Docker, automated testing, CI/CD and cloud deployment**.
 
-## Testing
-- I used Postman to test my API endpoints throughout development - this allowed me to send different types of requests, inspect the responses & test different scenarios.
+## 🚀 Live API
 
-## Database
-- I used pgAdmin to manage and inspect the database
-- I initially used raw SQL but switched to SQLAlchemy as an ORM, allowing me to write sql operations and define my database structure using Python code
-- But one limitation that i encountered with SQLAlchemy is that it doesn't allow me to modify tables if they already exist, which means i have to resort to dropping the tables and restarting the application
-- This led me to explore Alembic which is a migration tool that allows database schemas to be updated incrementally without having to drop anything and also revert back a previous version
+**Swagger API Documentation:**
+https://microblog-api-11vg.onrender.com/docs
 
-## Login & Authentication
-- I implemented user registration with password hashing so that passwords are securely hashed before being stored
-- Once logged in, the server generates a JWT which can then be used to authenticate subsequent requests to protected API endpoints - e.g. A user can only update and delete their own posts
+## 🛠️ Tech Stack
+
+- **Backend:** Python, FastAPI, Pydantic
+- **Database:** PostgreSQL, SQLAlchemy, Alembic
+- **Authentication:** JWT, OAuth2, password hashing
+- **Testing:** pytest, Postman
+- **DevOps:** Docker, Docker Compose, GitHub Actions, Render
+- **Tools:** pgAdmin, Git, Linux
+
+## 📌 Features
+
+The API is organised into four main route groups:
+
+* **Posts** — Create, retrieve, update and delete posts
+* **Users** — User registration and retrieving users by ID
+* **Auth** — Login and JWT-based authentication
+* **Votes** — Like/upvote functionality
+
+Protected endpoints use authentication and authorisation to ensure users can only modify their own posts.
+
+## 🗄️ Database & Migrations
+
+I initially used raw SQL before moving to **SQLAlchemy** as an ORM to manage database operations and models using Python.
+
+To manage changes to the database schema, I implemented **Alembic** migrations. This allows schema changes to be applied incrementally without dropping existing tables and provides the ability to roll back migrations.
+
+## 🔐 Authentication
+
+User passwords are securely **hashed before being stored**.
+
+After login, the API generates a **JWT access token** which is used to authenticate subsequent requests to protected endpoints.
+
+## 🧪 Testing & CI/CD
+
+I used **Postman** throughout development to test endpoints, responses and different scenarios.
+
+The project also includes **pytest** automated tests, which are run through **GitHub Actions**. The CI pipeline also builds the application's Docker image and uses GitHub Secrets for configuration.
+
+## 🐳 Deployment
+
+The application is containerised using **Docker** and deployed to **Render**, with separate development and production configuration.
