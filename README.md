@@ -4,8 +4,6 @@ A backend REST API for a microblogging/social media application built with **Pyt
 
 The project implements user authentication, post management and an upvote system, with **Docker, automated testing, CI/CD and cloud deployment**.
 
-## 🚀 Live API
-
 **Swagger API Documentation:**
 https://microblog-api-11vg.onrender.com/docs
 
@@ -13,10 +11,10 @@ https://microblog-api-11vg.onrender.com/docs
 
 - **Backend:** Python, FastAPI, Pydantic
 - **Database:** PostgreSQL, SQLAlchemy, Alembic
-- **Authentication:** JWT, OAuth2, password hashing
+- **Authentication:** JWT, OAuth2
 - **Testing:** pytest, Postman
 - **DevOps:** Docker, Docker Compose, GitHub Actions, Render
-- **Tools:** pgAdmin, Git, Linux
+- **Tools:** pgAdmin, Git
 
 ## 📌 Features
 
