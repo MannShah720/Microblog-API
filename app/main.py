@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
 from fastapi import FastAPI
@@ -17,6 +18,15 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 # models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 origins = ["*"]
 
