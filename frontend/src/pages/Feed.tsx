@@ -1,4 +1,5 @@
 import CreatePost from "../components/CreatePost";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getPosts } from "../services/api";
 
@@ -17,10 +18,16 @@ type PostWithVotes = {
 };
 
 function Feed() {
-    const [refreshKey, setRefreshKey] = useState(0);
+  const navigate = useNavigate();
+  const [refreshKey, setRefreshKey] = useState(0);
   const [posts, setPosts] = useState<PostWithVotes[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  function handleLogout() {
+    sessionStorage.removeItem("access_token");
+    navigate("/login", { replace: true });
+    }
 
   useEffect(() => {
     async function fetchPosts() {
@@ -59,9 +66,18 @@ function Feed() {
     <div className="min-h-screen bg-gray-100 py-10">
       <div className="mx-auto max-w-2xl px-4">
 
-        <h1 className="mb-8 text-3xl font-bold">
-          Your Feed
+        <div className="mb-8 flex items-center justify-between">
+        <h1 className="text-3xl font-bold">
+            Your Feed
         </h1>
+
+        <button
+            onClick={handleLogout}
+            className="rounded-md bg-red-600 px-5 py-2 text-white hover:bg-red-700"
+        >
+            Logout
+        </button>
+        </div>
 
         <CreatePost
             onPostCreated={() => setRefreshKey((current) => current + 1)}

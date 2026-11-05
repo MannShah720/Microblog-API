@@ -1,7 +1,10 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useState, type FormEvent } from "react";
 import { loginUser } from "../services/api";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -22,11 +25,9 @@ function Login() {
         throw new Error("Login succeeded but no access token was returned.");
       }
 
-      // Store the JWT for this browser session
       sessionStorage.setItem("access_token", data.access_token);
 
-      setMessage("Login successful!");
-      setPassword("");
+      navigate("/feed", { replace: true });
     } catch (err) {
       setError(true);
       setMessage(
@@ -39,67 +40,70 @@ function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow">
-
-        <h1 className="mb-6 text-2xl font-bold">
-          Welcome Back
+      <form
+        onSubmit={handleLogin}
+        className="w-full max-w-md rounded-xl bg-white p-8 shadow-md"
+      >
+        <h1 className="mb-6 text-2xl font-bold text-center">
+          Login to your account
         </h1>
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        <label className="mb-2 block font-medium" htmlFor="email">
+          Email
+        </label>
 
-          <div>
-            <label className="mb-1 block font-medium" htmlFor="email">
-              Email
-            </label>
+        <input
+          id="email"
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="mb-4 w-full rounded-lg border p-3"
+          placeholder="you@example.com"
+        />
 
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full rounded-md border p-2"
-              placeholder="you@example.com"
-            />
-          </div>
+        <label className="mb-2 block font-medium" htmlFor="password">
+          Password
+        </label>
 
-          <div>
-            <label className="mb-1 block font-medium" htmlFor="password">
-              Password
-            </label>
+        <input
+          id="password"
+          type="password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="mb-6 w-full rounded-lg border p-3"
+          placeholder="Enter your password"
+        />
 
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full rounded-md border p-2"
-              placeholder="Enter your password"
-            />
-          </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full rounded-lg bg-blue-600 p-3 font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+        >
+          {loading ? "Logging in..." : "Login"}
+        </button>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-md bg-blue-600 p-2 text-white hover:bg-blue-700 disabled:opacity-50"
+        <p className="mt-6 text-center text-sm text-gray-600">
+          Haven't registered yet?{" "}
+          <Link
+            to="/register"
+            className="font-semibold text-blue-600 hover:underline"
           >
-            {loading ? "Logging in..." : "Login"}
-          </button>
-
-        </form>
+            Create an account
+          </Link>
+        </p>
 
         {message && (
           <p
-            className={`mt-4 text-sm ${
+            className={`mt-4 text-center text-sm ${
               error ? "text-red-600" : "text-green-600"
             }`}
           >
             {message}
           </p>
         )}
-
-      </div>
+      </form>
     </div>
   );
 }

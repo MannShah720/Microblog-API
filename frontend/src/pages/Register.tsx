@@ -1,7 +1,9 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { registerUser } from "../services/api";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -18,9 +20,11 @@ export default function Register() {
     try {
       await registerUser(email, password);
 
-      setMessage("Account created successfully!");
-      setEmail("");
-      setPassword("");
+      navigate("/login", {
+        replace: true,
+        state: { registered: true },
+        });
+    
     } catch (err) {
       setError(
         err instanceof Error
@@ -78,6 +82,16 @@ export default function Register() {
         >
           {loading ? "Creating account..." : "Register"}
         </button>
+
+        <p className="mt-6 text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <Link
+            to="/login"
+            className="font-semibold text-blue-600 hover:underline"
+        >
+            Log in
+        </Link>
+      </p>
 
         {message && (
           <p className="mt-4 text-center text-green-600">{message}</p>
